@@ -1,0 +1,15 @@
+import { inject, Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { environment } from '../../environments/environment';
+
+@Injectable({ providedIn: 'root' })
+export class ApiService {
+  private readonly http = inject(HttpClient);
+  private readonly baseUrl = environment.apiBaseUrl;
+
+  post<T>(path: string, body: unknown) {
+    return this.http.post<T>(`${this.baseUrl}${path}`, body);
+  }
+}
+
+

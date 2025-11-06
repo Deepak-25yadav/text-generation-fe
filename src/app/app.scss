@@ -1,0 +1,13 @@
+:host {
+  font-family: Inter, system-ui, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+}
+
+.app-header {
+  border-bottom: 1px solid #eee;
+  .container { max-width: 1100px; margin: 0 auto; padding: 1rem; }
+}
+
+.app-main {
+  .container { max-width: 1100px; margin: 0 auto; padding: 1rem; }
+}
+

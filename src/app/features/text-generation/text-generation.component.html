@@ -1,0 +1,15 @@
+<section class="container">
+  <h1>Text Generation</h1>
+  <form (ngSubmit)="onSubmit()">
+    <label for="prompt">Prompt</label>
+    <textarea id="prompt" [ngModel]="prompt()" (ngModelChange)="prompt.set($event)" name="prompt" rows="5" required></textarea>
+    <button type="submit" [disabled]="loading()">Generate</button>
+  </form>
+
+  <div class="result" *ngIf="answer()">
+    <h2>Answer</h2>
+    <pre>{{ answer() }}</pre>
+  </div>
+</section>
+
+
