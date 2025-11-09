@@ -1,0 +1,62 @@
+<section class="container">
+  <h1>Image Generation</h1>
+  
+  <form (ngSubmit)="onSubmit()">
+    <label for="prompt">Prompt</label>
+    <textarea 
+      id="prompt" 
+      [ngModel]="prompt()" 
+      (ngModelChange)="prompt.set($event)" 
+      name="prompt" 
+      rows="4" 
+      placeholder="Describe the image you want to generate..."
+      required>
+    </textarea>
+
+    <div class="options">
+      <div class="option-group">
+        <label for="size">Size</label>
+        <select 
+          id="size" 
+          [ngModel]="size()" 
+          (ngModelChange)="size.set($event)" 
+          name="size">
+          <option value="1024x1024">1024x1024 (Square)</option>
+          <option value="1792x1024">1792x1024 (Landscape)</option>
+          <option value="1024x1792">1024x1792 (Portrait)</option>
+        </select>
+      </div>
+
+      <div class="option-group">
+        <label for="quality">Quality</label>
+        <select 
+          id="quality" 
+          [ngModel]="quality()" 
+          (ngModelChange)="quality.set($event)" 
+          name="quality">
+          <option value="standard">Standard</option>
+          <option value="hd">HD</option>
+        </select>
+      </div>
+    </div>
+
+    <button type="submit" [disabled]="loading()">
+      {{ loading() ? 'Generating...' : 'Generate Image' }}
+    </button>
+  </form>
+
+  <div class="error" *ngIf="error()">
+    <p>{{ error() }}</p>
+  </div>
+
+  <div class="result" *ngIf="imageUrl()">
+    <h2>Generated Image</h2>
+    <div class="image-container">
+      <img [src]="imageUrl()" alt="Generated image" />
+    </div>
+    <button type="button" class="download-btn" (click)="downloadImage()">
+      Download Image
+    </button>
+  </div>
+</section>
+
