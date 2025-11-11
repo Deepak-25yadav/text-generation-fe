@@ -14,5 +14,11 @@ export const routes: Routes = [
       import('./features/image-generation/image-generation.component')
         .then(m => m.ImageGenerationComponent)
   },
+  {
+    path: 'quiz',
+    loadComponent: () =>
+      import('./features/quiz-generation/quiz-generation.component')
+        .then(m => m.QuizGenerationComponent)
+  },
   { path: '**', redirectTo: 'text' }
 ];
